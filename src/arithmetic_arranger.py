@@ -12,6 +12,14 @@ def arithmetic_arranger(operations, show_result=True):
         if not operands[0].isdigit() or not operands[2].isdigit():
             return "Error: Numbers must only contains digits."
 
+        width = max(len(operands[0]), len(operands[2])) + 2
+        problems += f"{operands[0]:>{width}}\n"
+        problems += f"{operands[1]} {operands[2]:>{width - 2}}\n"
+        problems += f"{'-' * width}\n"
 
-sample_operation = ["5 + 10", "2 - 1"]
-arithmetic_arranger(sample_operation)
+    return problems.rstrip()
+
+
+sample_operation = ["5 + 10", "2 - 1", "1324 + 1453"]
+sample = arithmetic_arranger(sample_operation)
+print(sample)
