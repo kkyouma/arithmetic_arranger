@@ -17,9 +17,17 @@ def arithmetic_arranger(operations, show_result=True):
         problems += f"{operands[1]} {operands[2]:>{width - 2}}\n"
         problems += f"{'-' * width}\n"
 
+        if show_result:
+            operators = {
+                "+": lambda x, y: x + y,
+                "-": lambda x, y: x - y,
+            }
+            result = operators[operands[1]](int(operands[0]), int(operands[2]))
+            problems += f"{result:>{width}}\n"
+
     return problems.rstrip()
 
 
 sample_operation = ["5 + 10", "2 - 1", "1324 + 1453"]
-sample = arithmetic_arranger(sample_operation)
+sample = arithmetic_arranger(sample_operation, True)
 print(sample)
